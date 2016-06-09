@@ -13,24 +13,24 @@ secret_key="[write AWS secretKey]"
 
 ## provision
 
-1. plan
++ plan
 ```sh
 terraform plan -var-file=secret.tfvars
 ```
 
-1.  apply (do provisioning)
++  apply (do provisioning)
 ```sh
 terraform apply -var-file=secret.tfvars
 ```
 
 ## destory (delete ec2)
 
-1. plan
++ plan
 ```sh
 terraform plan -destroy -out=./terraform.tfstate -var-file=secret.tfvars
 ```
 
-1. apply (do delete)
++ apply (do delete)
 ```sh
 terraform apply ./terraform.tfstate
 ```
