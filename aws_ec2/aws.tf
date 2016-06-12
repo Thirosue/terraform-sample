@@ -10,19 +10,21 @@ provider "aws" {
 resource "aws_instance" "solr1" {
     ami = "ami-b1b458b1"
     key_name = "devenv-key"
-    instance_type = "t2.micro"
+    instance_type = "t2.small"
     vpc_security_group_ids = [
         "${aws_security_group.allow_local.id}"
     ]
+    private_ip = "172.31.1.1"
 }
 
 resource "aws_instance" "solr2" {
     ami = "ami-b1b458b1"
     key_name = "devenv-key"
-    instance_type = "t2.micro"
+    instance_type = "t2.small"
     vpc_security_group_ids = [
         "${aws_security_group.allow_local.id}"
     ]
+    private_ip = "172.31.1.2"
 }
 
 resource "aws_security_group" "allow_local" {
