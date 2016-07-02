@@ -8,23 +8,23 @@ provider "aws" {
 }
 
 resource "aws_instance" "solr1" {
-    ami = "ami-b1b458b1"
-    key_name = "devenv-key"
-    instance_type = "t2.small"
+    ami = "ami-6154bb00"
+    key_name = "hirosue"
+    instance_type = "t2.micro"
     vpc_security_group_ids = [
         "${aws_security_group.allow_local.id}"
     ]
-    private_ip = "172.31.1.1"
+    private_ip = "172.31.18.161"
 }
 
 resource "aws_instance" "solr2" {
-    ami = "ami-b1b458b1"
-    key_name = "devenv-key"
-    instance_type = "t2.small"
+    ami = "ami-6154bb00"
+    key_name = "hirosue"
+    instance_type = "t2.micro"
     vpc_security_group_ids = [
         "${aws_security_group.allow_local.id}"
     ]
-    private_ip = "172.31.1.2"
+    private_ip = "172.31.18.162"
 }
 
 resource "aws_security_group" "allow_local" {
