@@ -1,0 +1,15 @@
+[
+  {
+    "name": "hhvm",
+    "image": "mirrored1976/hhvm-sample",
+    "cpu": 10,
+    "memory": 300,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 9000,
+        "hostPort": 9000
+      }
+    ]
+  }
+]

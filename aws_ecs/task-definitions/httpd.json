@@ -1,0 +1,15 @@
+[
+  {
+    "name": "httpd",
+    "image": "mirrored1976/apache2",
+    "cpu": 10,
+    "memory": 300,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80
+      }
+    ]
+  }
+]
