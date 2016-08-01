@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "hhvm" {
     name = "hhvm"
-    image_id = "ami-2443b745"
+    image_id = "ami-2b08f44a"
     key_name = "hirosue"
     instance_type = "t2.micro"
     iam_instance_profile = "ecsInstanceRole"

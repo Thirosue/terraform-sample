@@ -14,7 +14,7 @@ resource "aws_elb" "hhvm" {
     healthy_threshold = 2
     unhealthy_threshold = 10
     timeout = 10
-    target = "TCP:9000/phpinfo.php"
+    target = "TCP:9000"
     interval = 30
   }
 
