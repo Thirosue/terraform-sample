@@ -4,6 +4,7 @@
 + security group for dmz
 + securety group for internal
 + IAM(ecsInstanceRole,ecsServiceRole)
++ AccessKey/SecretKey(secret.tfvars)
 
 ## plan
 ```
