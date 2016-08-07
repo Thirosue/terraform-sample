@@ -1,20 +1,20 @@
-resource "aws_elb" "hhvm" {
-  name = "hhvm"
+resource "aws_elb" "httpd" {
+  name = "httpd"
   availability_zones = ["ap-northeast-1a"]
-  security_groups = ["sg-f2347096"]
+  security_groups = ["${var.security_groups_dmz}"]
 
   listener {
-    instance_port = 9000
-    instance_protocol = "tcp"
-    lb_port = 9000
-    lb_protocol = "tcp"
+    instance_port = 80
+    instance_protocol = "http"
+    lb_port = 80
+    lb_protocol = "http"
   }
 
   health_check {
     healthy_threshold = 2
     unhealthy_threshold = 10
     timeout = 10
-    target = "TCP:9000"
+    target = "HTTP:80/"
     interval = 30
   }
 
