@@ -1,5 +1,5 @@
 ## Require
-+ VIP
++ VPC
 + ssh_key
 + security group for dmz
 + securety group for internal
