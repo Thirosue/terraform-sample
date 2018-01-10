@@ -15,22 +15,10 @@ secret_key="[シークレットキーを記載]"
 ## plan
 
 ```
-terraform plan
-```
-
-use vars
-
-```
 terraform plan -var 'aws_id=[AWS Account Id]'
 ```
 
 ## apply
-
-```
-terraform apply
-```
-
-use vars
 
 ```
 terraform apply -var 'aws_id=[AWS Account Id]'
@@ -43,12 +31,6 @@ terraform show
 ```
 
 ## destory :boom:
-
-```
-terraform destory
-```
-
-use vars
 
 ```
 terraform destroy -var 'aws_id=[AWS Account Id]'
