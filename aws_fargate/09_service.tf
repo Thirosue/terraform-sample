@@ -23,6 +23,7 @@ resource "aws_ecs_service" "nginx" {
     security_groups = [
       "${aws_security_group.public_firewall.id}"
     ]
+    assign_public_ip = "true"
   }
 
   depends_on = [
