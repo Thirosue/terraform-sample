@@ -1,4 +1,4 @@
-# Fargate provisioning
+# EC2 provisioning
 
 Teraformを用いる
 
