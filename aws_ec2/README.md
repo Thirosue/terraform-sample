@@ -1,36 +1,37 @@
-# terraform aws(ec2) provisioning sample
+# Fargate provisioning
 
-## required terraform
-[Terraform](https://www.terraform.io/ "Terraform")
+Teraformを用いる
 
-## setting
-```sh
-$ touch secret.tfvars
-$ cat secret.tfvars
-access_key="[write AWS accessKey]"
-secret_key="[write AWS secretKey]"
+## access_key / secret_key
+
+terraform.tfvarsに記載
+
+```
+$ cat terraform.tfvars
+access_key="[アクセスキー記載]"
+secret_key="[シークレットキーを記載]"
 ```
 
-## provision
+## plan
 
-+ plan
-```sh
-terraform plan -var-file=secret.tfvars
+```
+terraform plan -var 'aws_id=[AWS Account Id]'
 ```
 
-+  apply (do provisioning)
-```sh
-terraform apply -var-file=secret.tfvars
+## apply
+
+```
+terraform apply -var 'aws_id=[AWS Account Id]'
 ```
 
-## destory (delete ec2)
+## show
 
-+ plan
-```sh
-terraform plan -destroy -out=./terraform.tfstate -var-file=secret.tfvars
+```
+terraform show
 ```
 
-+ apply (do delete)
-```sh
-terraform apply ./terraform.tfstate
+## destory :boom:
+
+```
+terraform destroy -var 'aws_id=[AWS Account Id]'
 ```
