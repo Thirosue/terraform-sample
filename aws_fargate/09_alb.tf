@@ -2,7 +2,7 @@
 # ALB Setting
 #####################################
 resource "aws_alb" "nginx" {
-  name = "${var.app_name}-nginx-alb"
+  name = "${var.app_name}-alb"
   internal = false
 
   security_groups = ["${aws_security_group.public_firewall.id}"]
@@ -16,20 +16,20 @@ resource "aws_alb" "nginx" {
   idle_timeout = 400
 
   tags {
-      Name = "${var.app_name} nginx-alb"
+      Name = "${var.app_name}-alb"
       Group = "${var.app_name}"
   }
 }
 
 resource "aws_alb_target_group" "nginx" {
-  name     = "${var.app_name}-nginx-target-group"
+  name     = "${var.app_name}-target-group"
   port     = 80
   protocol = "HTTP"
   vpc_id   = "${aws_vpc.vpc.id}"
   target_type = "ip"
 
   tags {
-      Name = "${var.app_name} nginx-target-group"
+      Name = "${var.app_name}-target-group"
       Group = "${var.app_name}"
   }
 }

@@ -14,7 +14,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "awslogs-${app_name}-nginx-log",
+            "awslogs-group": "awslogs-${app_name}-log",
             "awslogs-region": "${aws_region}",
             "awslogs-stream-prefix": "awslogs-${app_name}-nginx"
         }

@@ -11,7 +11,7 @@ variable "aws_id" {}
 #######################
 
 variable "app_name" {
-  default = "fargate"
+  default = "fargate-sample"
 }
 
 variable "region" {

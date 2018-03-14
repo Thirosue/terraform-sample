@@ -2,8 +2,8 @@
 # Service Setting
 #####################################
 resource "aws_ecs_service" "nginx" {
-  name = "${var.app_name}-auth-service"
-  cluster = "${aws_ecs_cluster.auth.id}"
+  name = "${var.app_name}-service"
+  cluster = "${aws_ecs_cluster.nginx.id}"
   task_definition = "${aws_ecs_task_definition.nginx.arn}"
   desired_count = 1
   launch_type = "FARGATE"
