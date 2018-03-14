@@ -1,0 +1,22 @@
+[
+  {
+    "name": "nginx",
+    "image": "nginx:alpine",
+    "cpu": 256,
+    "memory": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "awslogs-${app_name}-log",
+            "awslogs-region": "${aws_region}",
+            "awslogs-stream-prefix": "awslogs-${app_name}-nginx"
+        }
+    }
+  }
+]

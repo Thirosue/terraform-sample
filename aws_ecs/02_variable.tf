@@ -5,16 +5,14 @@
 variable "access_key" {}
 variable "secret_key" {}
 variable "aws_id" {}
+variable "aws_key_pair" {}
 
 #######################
 # Option
 #######################
-variable "app_name" {
-  default = "solrcloud"
-}
 
-variable "key_name" {
-  default = "daifuku"
+variable "app_name" {
+  default = "ecs-sample"
 }
 
 variable "region" {
@@ -47,10 +45,10 @@ variable "myip" {
 
 variable "aws_amis" {
   default = {
-      "us-east-1" = "ami-428aa838"
+      "us-east-1" = "ami-a7a242da"
   }
 }
 
 variable "instance_type" {
-  default = "m5.2xlarge"
+  default = "t2.micro"
 }

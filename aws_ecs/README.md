@@ -1,44 +1,38 @@
-## Require
-+ VPC
-+ ssh_key
-+ security group for dmz
-+ securety group for internal
-+ IAM(ecsInstanceRole,ecsServiceRole)
-+ AccessKey/SecretKey(secret.tfvars)
+# ECS provisioning
+
+Teraformを用いる
+
+## access_key / secret_key
+
+terraform.tfvarsに記載
+
+```
+$ cat terraform.tfvars
+access_key="[アクセスキー記載]"
+secret_key="[シークレットキーを記載]"
+aws_id="[AWS IDを記載]"
+```
 
 ## plan
+
 ```
-terraform plan -var-file=../secret.tfvars \
- -var 'ssh_key_name=hirosue' \
- -var 'instance_type=t2.medium' \
- -var 'security_groups_internal=sg-41ecc325' \
- -var 'security_groups_dmz=sg-41ecc325' \
- -var 'hhvm_vip=internal-hhvm-892282372.ap-northeast-1.elb.amazonaws.com'
+terraform plan -var "aws_key_pair=[AWS EC2 Key Pair]"
 ```
 
 ## apply
+
 ```
-terraform apply -var-file=../secret.tfvars \
- -var 'ssh_key_name=hirosue' \
- -var 'instance_type=t2.medium' \
- -var 'security_groups_internal=sg-41ecc325' \
- -var 'security_groups_dmz=sg-41ecc325' \
- -var 'hhvm_vip=internal-hhvm-892282372.ap-northeast-1.elb.amazonaws.com'
+terraform apply -var "aws_key_pair=[AWS EC2 Key Pair]"
 ```
 
-## destroy
+## show
 
-+ play
 ```
-terraform plan -destroy -out=./terraform.tfstate -var-file=../secret.tfvars \
- -var 'ssh_key_name=hirosue' \
- -var 'instance_type=t2.medium' \
- -var 'security_groups_internal=sg-41ecc325' \
- -var 'security_groups_dmz=sg-41ecc325' \
- -var 'hhvm_vip=internal-hhvm-892282372.ap-northeast-1.elb.amazonaws.com'
+terraform show
 ```
 
-+ do
+## destory :boom:
+
 ```
-terraform apply ./terraform.tfstate
+terraform destroy -var "aws_key_pair=[AWS EC2 Key Pair]"
 ```
