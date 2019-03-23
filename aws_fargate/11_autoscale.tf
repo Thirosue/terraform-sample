@@ -51,13 +51,16 @@ resource "aws_appautoscaling_policy" "scale_out" {
   resource_id             = "service/${aws_ecs_cluster.nginx.name}/${aws_ecs_service.nginx.name}"
   scalable_dimension      = "${aws_appautoscaling_target.ecs_service_target.scalable_dimension}"
   service_namespace       = "${aws_appautoscaling_target.ecs_service_target.service_namespace}"
-  adjustment_type         = "ChangeInCapacity"
-  cooldown                = 300
-  metric_aggregation_type = "Average"
 
-  step_adjustment {
-    metric_interval_lower_bound = 0
-    scaling_adjustment          = 1
+  step_scaling_policy_configuration {
+    adjustment_type         = "ChangeInCapacity"
+    cooldown                = 300
+    metric_aggregation_type = "Average"
+
+    step_adjustment {
+      metric_interval_upper_bound = 0
+      scaling_adjustment          = 1
+    }
   }
 
   depends_on = ["aws_appautoscaling_target.ecs_service_target"]
@@ -68,13 +71,16 @@ resource "aws_appautoscaling_policy" "scale_in" {
   resource_id             = "service/${aws_ecs_cluster.nginx.name}/${aws_ecs_service.nginx.name}"
   scalable_dimension      = "${aws_appautoscaling_target.ecs_service_target.scalable_dimension}"
   service_namespace       = "${aws_appautoscaling_target.ecs_service_target.service_namespace}"
-  adjustment_type         = "ChangeInCapacity"
-  cooldown                = 300
-  metric_aggregation_type = "Average"
 
-  step_adjustment {
-    metric_interval_upper_bound = 0
-    scaling_adjustment          = -1
+  step_scaling_policy_configuration {
+    adjustment_type         = "ChangeInCapacity"
+    cooldown                = 300
+    metric_aggregation_type = "Average"
+
+    step_adjustment {
+      metric_interval_upper_bound = 0
+      scaling_adjustment          = -1
+    }
   }
 
   depends_on = ["aws_appautoscaling_target.ecs_service_target"]
