@@ -1,0 +1,28 @@
+[
+  {
+    "name": "front",
+    "image": "mirrored1976/sample-vue-front",
+    "cpu": 256,
+    "memory": 512,
+    "essential": true,
+    "network_mode": "awsvpc",
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ],
+    "environment" : [
+      { "name" : "API_HOST", "value" : "${api_dns}" },
+      { "name" : "API_PORT", "value" : "18081" }
+    ],
+    "command": ["/bin/ash", "-c", "envsubst '$$API_HOST $$API_PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "awslogs-${app_name}-log",
+            "awslogs-region": "${aws_region}",
+            "awslogs-stream-prefix": "awslogs-${app_name}-front"
+        }
+    }
+  }
+]
